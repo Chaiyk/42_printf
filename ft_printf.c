@@ -9,8 +9,12 @@ int	ft_conversion(char chr, va_list arr)
 	i = 0;
 	if(chr == 'c')
 		i = ft_putchar_fd(va_arg(arr, int), 1);
-	else if (chr == 's' || chr =='p')
+	else if (chr == 's')
 		i = ft_putstr_fd(va_arg(arr, char *), 1);
+	//else if (chr =='p')
+	//	i = ft_putchar_fd(va_arg(arr, int), 1);
+	else if(chr == 'd' || chr == 'i')
+		i = ft_putnbr_fd(va_arg(arr, int), 1);
 
 	return (i);
 }
@@ -57,11 +61,10 @@ int main(void)
 	}
 
     printf("\n--String (%%s)--\n");
-
 	char	*str;
 
 	str = "Hello World!?!";
-	printf(" - Return: %d\n", printf("Ori: %s", str));
+	printf(" - Return: %d\n", prHexadecimal valuesintf("Ori: %s", str));
 	printf(" - Return: %d\n\n", ft_printf("Own: %s", str));
 
 	str = "0123456789";
@@ -71,7 +74,8 @@ int main(void)
 	str = "What is This???";
 	printf(" - Return: %d\n", printf("Ori: %s", str));
 	printf(" - Return: %d\n\n", ft_printf("Own: %s", str));
-*/
+
+
     printf("\n--The Void (%%p)--\n");
 	static int a;
 	int b;
@@ -86,5 +90,34 @@ int main(void)
 	printf(" - Return: %d | ", printf("Ori: %p", (void *) &c));
 	ft_printf("Own: %p\n", (void *) &c);
 
-}
 
+    printf("\n--Decimal (%%d)--\n");
+	int	num1;
+
+	num = 123;
+	printf(" - Return: %d | ", printf("Ori: %d", num1));
+	printf(" - Return: %d\n\n", ft_printf("Own: %d", num1));
+
+	num1 = -123;
+	printf(" - Return: %d | ", printf("Ori: %d", num1));
+	printf(" - Return: %d\n\n", ft_printf("Own: %d", num1));
+
+	num1 = -2147483648;
+	printf(" - Return: %d | ", printf("Ori: %d", num1));
+	printf(" - Return: %d\n\n", ft_printf("Own: %d", num1));
+
+    printf("\n--Integer (%%i)--\n");
+	int	num2;
+	num2 = 123;
+	printf(" - Return: %d | ", printf("Ori: %i", num2));
+	printf(" - Return: %d\n\n", ft_printf("Own: %i", num2));
+
+	num2 = -123;
+	printf(" - Return: %d | ", printf("Ori: %i", num2));
+	printf(" - Return: %d\n\n", ft_printf("Own: %i", num2));
+
+	num2 = -2147483648;
+	printf(" - Return: %d | ", printf("Ori: %i", num2));
+	printf(" - Return: %d\n\n", ft_printf("Own: %i", num2));
+*/
+}
