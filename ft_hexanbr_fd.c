@@ -14,8 +14,6 @@ int	ft_hexanbrlow_fd(int n, int fd)
 	}
 	if (n < 16)
 	{
-		if (i == 0)
-			ft_putstr_fd("0x", 1);	
 		i++;
 		ft_putchar_fd(hexa[n], fd);
 	}
@@ -38,8 +36,6 @@ int	ft_hexanbrup_fd(int n, int fd)
 	}
 	if (n < 16)
 	{
-		if (i == 0)
-			ft_putstr_fd("0x", 1);	
 		i++;
 		ft_putchar_fd(hexa[n], fd);
 	}

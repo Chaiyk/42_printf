@@ -1,6 +1,5 @@
 #include <stdarg.h>
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	ft_conversion(char chr, va_list arr)
 {
@@ -11,8 +10,8 @@ int	ft_conversion(char chr, va_list arr)
 		i = ft_putchar_fd(va_arg(arr, int), 1);
 	else if (chr == 's')
 		i = ft_putstr_fd(va_arg(arr, char *), 1);
-	//else if (chr =='p')
-	//	i = ft_putchar_fd(va_arg(arr, int), 1);
+	else if (chr =='p')
+		i = ft_pointer(va_arg(arr, int), 1);
 	else if (chr == 'd' || chr == 'i')
 		i = ft_putnbr_fd(va_arg(arr, int), 1);
 	else if (chr == 'u')
@@ -30,34 +29,38 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	arr;
 	int		count;
-	int		count_percent;
+	int		countb;
 	int		count_str;
 
 	count = 0;
-	count_percent = 0;
+	countb = 0;
 	count_str = 0;
 	va_start(arr, str);
-	while (str[count])
+	while (str[count + countb])
 	{
-		if (str[count] == '%')
+		if (str[count + countb] == '%')
 		{
-			count_str += ft_conversion(str[count + 1], arr);
-			count_percent++;
+			count_str += ft_conversion(str[count + countb + 1], arr);
+			if (str[count + countb + 2] == '\n')
+				countb++;
+			else
+				countb += 2;
 		}
 		else
+		{
 			ft_putchar_fd(str[count], 1);
-		count++;
+			count++;
+		}
 	}
-	count -= count_percent;
 	va_end(arr);
 	return (count + count_str);
 }
-
+/*
 #include <stdio.h>
 
 int	main(void)
 {
-/*
+
     printf("\n--Character (%%c)--\n");
 
 	for(int chr = 33; chr < 127; chr++)
@@ -86,16 +89,12 @@ int	main(void)
     printf("\n--The Void (%%p)--\n");
 	static int a;
 	int b;
-	int *c;
 
 	printf(" - Return: %d | ", printf("Ori: %p", (void *) &a));
-	ft_printf("Own: %p\n", (void *) &a);
+	printf(" - Return: %d\n", ft_printf("Own: %p", (void *) &a));
 
 	printf(" - Return: %d | ", printf("Ori: %p", (void *) &b));
-	ft_printf("Own: %p\n", (void *) &b);
-
-	printf(" - Return: %d | ", printf("Ori: %p", (void *) &c));
-	ft_printf("Own: %p\n", (void *) &c);
+	printf(" - Return: %d\n", ft_printf("Own: %p", (void *) &b));
 
 
     printf("\n--Decimal (%%d)--\n");
@@ -137,7 +136,7 @@ int	main(void)
 	printf(" - Return: %d\n\n", ft_printf("Own: %u", num3));
 
 	num3 = 0xFFFFFFFF;
-	printf(" - Return: %d | ", printf("Ori: %u", num3));
+	printf(" - Reiturn: %d | ", printf("Ori: %u", num3));
 	printf(" - Return: %d\n\n", ft_printf("Own: %u", num3));
 
 
@@ -170,7 +169,7 @@ int	main(void)
 		printf("Number: %d	| ", num5);
 		printf(" - Return: %d	| ", printf("Ori: %X", num5));
 		printf(" - Return: %d\n", ft_printf("Own: %X", num5));	
-	}2147483647
+	}
 
 	num5 = 174;
 	printf("Number: %d	| ", num5);
@@ -181,12 +180,14 @@ int	main(void)
 	printf("Number: %d	| ", num5);
 	printf(" - Return: %d	| ", printf("Ori: %X", num5));
 	printf(" - Return: %d\n", ft_printf("Own: %X", num5));
-*/
+
 
 	printf("\n--Percent Sign (%%%%)--\n");
 	printf(" - Return: %d | ", printf("Ori: %%"));
 	printf(" - Return: %d\n", ft_printf("Own: %%"));
 
-	printf(" - Return: %d | ", printf("Ori: %% %%"));
-	printf(" - Return: %d\n", ft_printf("Own: %% %%"));
+	printf(" - Return: %d | ", printf("Ori: %%%%%%%%"));
+	printf(" - Return: %d\n", ft_printf("Own: %%%%%%%%"));
+
 }
+*/
