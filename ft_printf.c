@@ -52,12 +52,12 @@ int	ft_printf(const char *str, ...)
 	va_end(arr);
 	return (count + count_str);
 }
-
+/*
 #include <stdio.h>
 
 int	main(void)
 {
-/*
+
     printf("\n--Character (%%c)--\n");
 
 	for(int chr = 33; chr < 127; chr++)
@@ -185,12 +185,5 @@ int	main(void)
 
 	printf(" - Return: %d | ", printf("Ori: %%%%%%%%"));
 	printf(" - Return: %d\n", ft_printf("Own: %%%%%%%%"));
-
-*/
-	printf("\n--Full Test--\n");
-	ft_printf("1. %c\n2. %i\n3. %d", 45, 35, 25);
- 
-
 }
-
-
+*/
