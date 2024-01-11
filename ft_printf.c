@@ -11,11 +11,11 @@ int	ft_conversion(char chr, va_list arr)
 	else if (chr == 's')
 		i = ft_putstr_fd(va_arg(arr, char *), 1);
 	else if (chr =='p')
-		i = ft_pointer(va_arg(arr, int), 1);
+		i = ft_pointer(va_arg(arr, unsigned int), 1);
 	else if (chr == 'd' || chr == 'i')
 		i = ft_putnbr_fd(va_arg(arr, int), 1);
 	else if (chr == 'u')
-		i = ft_unsigned_fd(va_arg(arr, int), 1);
+		i = ft_unsigned_fd(va_arg(arr, unsigned int), 1);
 	else if (chr == 'x')
 		i = ft_hexanbrlow_fd(va_arg(arr, int), 1);
 	else if (chr == 'X')
@@ -38,29 +38,26 @@ int	ft_printf(const char *str, ...)
 	va_start(arr, str);
 	while (str[count + countb])
 	{
-		if (str[count + countb] == '%')
+		if (str[count + countb] != '%')
 		{
-			count_str += ft_conversion(str[count + countb + 1], arr);
-			if (str[count + countb + 2] == '\n')
-				countb++;
-			else
-				countb += 2;
+			ft_putchar_fd(str[count + countb], 1);
+			count++;
 		}
 		else
 		{
-			ft_putchar_fd(str[count], 1);
-			count++;
+			count_str += ft_conversion(str[count + countb + 1], arr);
+			countb += 2;
 		}
 	}
 	va_end(arr);
 	return (count + count_str);
 }
-/*
+
 #include <stdio.h>
 
 int	main(void)
 {
-
+/*
     printf("\n--Character (%%c)--\n");
 
 	for(int chr = 33; chr < 127; chr++)
@@ -189,5 +186,11 @@ int	main(void)
 	printf(" - Return: %d | ", printf("Ori: %%%%%%%%"));
 	printf(" - Return: %d\n", ft_printf("Own: %%%%%%%%"));
 
-}
 */
+	printf("\n--Full Test--\n");
+	ft_printf("1. %c\n2. %i\n3. %d", 45, 35, 25);
+ 
+
+}
+
+

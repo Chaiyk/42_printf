@@ -2,8 +2,8 @@
 
 int	ft_pointer(unsigned int n, int fd)
 {
-	int i;
-	char *hexa;
+	int		i;
+	char	*hexa;
 
 	i = 0;
 	hexa = "0123456789abcdef";
@@ -16,7 +16,7 @@ int	ft_pointer(unsigned int n, int fd)
 	{
 		if (i == 0)
 		{
-			ft_putstr_fd("0x", 1);	
+			ft_putstr_fd("0x", 1);
 			i += 2;
 		}
 		i++;

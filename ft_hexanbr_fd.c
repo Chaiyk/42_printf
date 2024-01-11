@@ -2,8 +2,8 @@
 
 int	ft_hexanbrlow_fd(int n, int fd)
 {
-	int	i;
-	char *hexa;
+	int		i;
+	char	*hexa;
 
 	i = 0;
 	hexa = "0123456789abcdef";
@@ -22,13 +22,11 @@ int	ft_hexanbrlow_fd(int n, int fd)
 
 int	ft_hexanbrup_fd(int n, int fd)
 {
-	int	i;
-	char *hexa;
+	int		i;
+	char	*hexa;
 
 	i = 0;
 	hexa = "0123456789ABCDEF";
-
-	
 	if (n >= 16)
 	{
 		i += ft_hexanbrup_fd(n / 16, fd);
