@@ -1,11 +1,15 @@
-SRCS = ft_putchar_fd.c	ft_putstr_fd.c	ft_putnbr_fd.c	ft_unsigned_fd.c	ft_hexanbr_fd.c\
-		ft_pointer.c
+SRCS = ft_putchar_fd.c\
+	   ft_putstr_fd.c\
+	   ft_putnbr_fd.c\
+	   ft_unsigned_fd.c\
+	   ft_hexanbr_fd.c\
+	   ft_pointer.c
 OBJS = $(SRCS:.c=.o)
 NAME = libftprintf.a
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Werror -Wextra
-AR = ar rcs
-RM = rm
+AR = ar rc
+RM = rm -fr
 
 all: $(NAME) 
 
