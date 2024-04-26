@@ -6,14 +6,14 @@
 /*   By: ychai <ychai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:25:12 by ychai             #+#    #+#             */
-/*   Updated: 2024/04/16 18:26:13 by ychai            ###   ########.fr       */
+/*   Updated: 2024/04/26 14:28:16 by ychai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar_fd(char c, int fd)
+int	ft_putchar_fd(char c)
 {
-	write(fd, &c, 1);
+	write(1, &c, 1);
 	return (1);
 }

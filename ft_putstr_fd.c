@@ -6,20 +6,20 @@
 /*   By: ychai <ychai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:26:32 by ychai             #+#    #+#             */
-/*   Updated: 2024/04/16 18:26:49 by ychai            ###   ########.fr       */
+/*   Updated: 2024/04/26 14:25:34 by ychai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr_fd(char *c, int fd)
+int	ft_putstr_fd(char *c)
 {
 	int	i;
 
 	i = 0;
 	while (c[i])
 	{
-		write(fd, &c[i], 1);
+		write(1, &c[i], 1);
 		i++;
 	}
 	return (i);

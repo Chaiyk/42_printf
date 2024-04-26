@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   old_ft_printf.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ychai <ychai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 13:18:50 by ychai             #+#    #+#             */
-/*   Updated: 2024/04/26 13:18:53 by ychai            ###   ########.fr       */
+/*   Updated: 2024/04/26 14:36:09 by ychai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_printf(const char *str, ...)
 	va_end(arr);
 	return (count + count_str);
 }
-/*
+
 #include <stdio.h>
 
 int	main(void)
@@ -197,4 +197,4 @@ int	main(void)
 	printf(" - Return: %d | ", printf("Ori: %%%%%%%%"));
 	printf(" - Return: %d\n", ft_printf("Own: %%%%%%%%"));
 }
-*/
+

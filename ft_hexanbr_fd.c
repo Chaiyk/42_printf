@@ -6,13 +6,13 @@
 /*   By: ychai <ychai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:23:50 by ychai             #+#    #+#             */
-/*   Updated: 2024/04/16 18:23:52 by ychai            ###   ########.fr       */
+/*   Updated: 2024/04/26 14:31:55 by ychai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_hexanbrlow_fd(int n, int fd)
+int	ft_hexanbrlow_fd(int n)
 {
 	int		i;
 	char	*hexa;
@@ -21,18 +21,18 @@ int	ft_hexanbrlow_fd(int n, int fd)
 	hexa = "0123456789abcdef";
 	if (n >= 16)
 	{
-		i += ft_hexanbrlow_fd(n / 16, fd);
+		i += ft_hexanbrlow_fd(n / 16);
 		n %= 16;
 	}
 	if (n < 16)
 	{
 		i++;
-		ft_putchar_fd(hexa[n], fd);
+		ft_putchar_fd(hexa[n]);
 	}
 	return (i);
 }
 
-int	ft_hexanbrup_fd(int n, int fd)
+int	ft_hexanbrup_fd(int n)
 {
 	int		i;
 	char	*hexa;
@@ -41,13 +41,13 @@ int	ft_hexanbrup_fd(int n, int fd)
 	hexa = "0123456789ABCDEF";
 	if (n >= 16)
 	{
-		i += ft_hexanbrup_fd(n / 16, fd);
+		i += ft_hexanbrup_fd(n / 16);
 		n %= 16;
 	}
 	if (n < 16)
 	{
 		i++;
-		ft_putchar_fd(hexa[n], fd);
+		ft_putchar_fd(hexa[n]);
 	}
 	return (i);
 }

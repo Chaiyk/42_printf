@@ -4,7 +4,9 @@ SRCS = ft_putchar_fd.c\
 	   ft_unsigned_fd.c\
 	   ft_hexanbr_fd.c\
 	   ft_pointer.c
+
 OBJS = $(SRCS:.c=.o)
+
 NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wall -Werror -Wextra

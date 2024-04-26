@@ -6,13 +6,13 @@
 /*   By: ychai <ychai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:23:59 by ychai             #+#    #+#             */
-/*   Updated: 2024/04/16 18:24:02 by ychai            ###   ########.fr       */
+/*   Updated: 2024/04/26 14:43:11 by ychai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_pointer(unsigned int n, int fd)
+int	ft_pointer(long long int n)
 {
 	int		i;
 	char	*hexa;
@@ -21,18 +21,20 @@ int	ft_pointer(unsigned int n, int fd)
 	hexa = "0123456789abcdef";
 	if (n >= 16)
 	{
-		i += ft_hexanbrlow_fd(n / 16, fd);
+		i += ft_pointer(n / 16);
 		n %= 16;
 	}
 	if (n < 16)
 	{
 		if (i == 0)
 		{
-			ft_putstr_fd("0x", 1);
+			ft_putstr_fd("0x");
 			i += 2;
 		}
 		i++;
-		ft_putchar_fd(hexa[n], fd);
+		ft_putchar_fd(hexa[n]);
 	}
 	return (i);
 }
+
+

@@ -6,37 +6,34 @@
 /*   By: ychai <ychai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:26:25 by ychai             #+#    #+#             */
-/*   Updated: 2024/04/16 18:26:26 by ychai            ###   ########.fr       */
+/*   Updated: 2024/04/26 14:51:41 by ychai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr_fd(int n)
 {
 	int	i;
 
 	i = 0;
 	if (n == -2147483648)
 	{
-		ft_putstr_fd("-21474836478", fd);
+		ft_putstr_fd("-21474836478");
 		return (11);
 	}
 	if (n < 0)
 	{
 		i++;
-		ft_putchar_fd('-', fd);
+		ft_putchar_fd('-');
 		n = n * -1;
 	}
 	if (n >= 10)
 	{
-		i += ft_putnbr_fd(n / 10, fd);
+		i += ft_putnbr_fd(n / 10);
 		n %= 10;
 	}
 	if (n < 10)
-	{
-		i++;
-		ft_putchar_fd(n + 48, fd);
-	}
+		i += ft_putchar_fd(n + 48);
 	return (i);
 }
