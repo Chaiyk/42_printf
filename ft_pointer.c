@@ -6,13 +6,13 @@
 /*   By: ychai <ychai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:23:59 by ychai             #+#    #+#             */
-/*   Updated: 2024/04/26 14:43:11 by ychai            ###   ########.fr       */
+/*   Updated: 2024/04/30 15:53:39 by ychai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_pointer(long long int n)
+int	ft_pointer(unsigned long long int n)
 {
 	int		i;
 	char	*hexa;
@@ -36,5 +36,3 @@ int	ft_pointer(long long int n)
 	}
 	return (i);
 }
-
-

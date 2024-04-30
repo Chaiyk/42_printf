@@ -1,4 +1,5 @@
-SRCS = ft_putchar_fd.c\
+SRCS = ft_printf.c\
+	   ft_putchar_fd.c\
 	   ft_putstr_fd.c\
 	   ft_putnbr_fd.c\
 	   ft_unsigned_fd.c\
@@ -31,3 +32,5 @@ fclean: clean
 	@ echo
 
 re: fclean all
+
+.PHONY: all clean fclean re

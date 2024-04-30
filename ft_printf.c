@@ -6,37 +6,11 @@
 /*   By: ychai <ychai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 13:21:13 by ychai             #+#    #+#             */
-/*   Updated: 2024/04/30 11:57:43 by ychai            ###   ########.fr       */
+/*   Updated: 2024/04/30 16:26:39 by ychai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	ft_convertion(char c, va_list array)
-{
-	int	len;
-
-	len = 0;
-	if (c == 'c')
-		len = ft_putchar_fd(va_arg(array, int));
-	else if (c == 's')
-		len = ft_putstr_fd(va_arg(array, char *));
-	else if (c == 'p')
-		len = ft_pointer(va_arg(array, long long int));
-	else if (c == 'd' || c == 'i')
-		len = ft_putnbr_fd(va_arg(array, int));
-	else if (c == 'u')
-		len = ft_unsigned_fd(va_arg(array, unsigned int));
-	else if (c == 'x')
-		len = ft_hexanbrlow_fd(va_arg(array, unsigned int));
-	else if (c == 'X')
-		len = ft_hexanbrup_fd(va_arg(array, unsigned int));
-	else if (c == '%')
-		len = ft_putchar_fd('%');
-	else
-		return (0);
-	return (len);
-}
 
 int	ft_printf(const char *str, ...)
 {
@@ -51,6 +25,7 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
+			
 			i++;
 			len += ft_convertion(str[i], arr);
 		}
@@ -63,6 +38,32 @@ int	ft_printf(const char *str, ...)
 	va_end(arr);
 	return (len);
 }
+
+int	ft_convertion(char c, va_list array)
+{
+	int	len;
+
+	len = 0;
+	if (c == 'c')
+		len = ft_putchar_fd(va_arg(array, int));
+	else if (c == 's')
+		len = ft_putstr_fd(va_arg(array, char *));
+	else if (c == 'p')
+		len = ft_pointer(va_arg(array, unsigned long long int));
+	else if (c == 'd' || c == 'i')
+		len = ft_putnbr_fd(va_arg(array, int));
+	else if (c == 'u')
+		len = ft_unsigned_fd(va_arg(array, unsigned int));
+	else if (c == 'x')
+		len = ft_hexanbrlow_fd(va_arg(array, unsigned int));
+	else if (c == 'X')
+		len = ft_hexanbrup_fd(va_arg(array, unsigned int));
+	else if (c == '%')
+		len = ft_putchar_fd('%');
+	else
+		return (0);
+	return (len);
+}
 /*
 int	main(void)
 {
@@ -72,6 +73,7 @@ int	main(void)
 
 	i = 0;
 	rtn = 0;
+
 	printf("\n-----\nChar (%%c)\n-----\n");
 	while (i < 177)
 	{
@@ -82,6 +84,7 @@ int	main(void)
 		i++;
 	}
 	
+
 	printf("\n-----\nStr (%%s)\n-----\n");
 
 	str = "Hello World!";
@@ -90,11 +93,19 @@ int	main(void)
 	rtn = printf("Ori: %s", str);
 	printf(" (Rtn: %d)\n", rtn);
 
-	str = "What is this?!?!";
+
+	str = "                             What is this?!?!";
 	rtn = ft_printf("Own: %s", str);
 	printf(" (Rtn: %d) | ", rtn);
 	rtn = printf("Ori: %s", str);
 	printf(" (Rtn: %d)\n", rtn);
+
+	str = NULL;
+	rtn = ft_printf("Own: NULL %s NULL", str);
+	printf(" (Rtn: %d) | ", rtn);
+	rtn = printf("Ori: NULL %s NULL", str);
+	printf(" (Rtn: %d)\n", rtn);
+
 
 	printf("\n-----\nThe Void * (%%p)\n-----\n");
 
@@ -111,6 +122,7 @@ int	main(void)
 	rtn = printf("Ori: %p", &void_test2);
 	printf(" (Rtn: %d)\n", rtn);
 
+
 	printf("\n-----\nDecimal (%%d)\n-----\n");
 
 	i = 12345;
@@ -125,13 +137,13 @@ int	main(void)
 	rtn = printf("Ori: %d", i);
 	printf(" (Rtn: %d)\n", rtn);
 
-	i = -0x7FFFFFFF - 1;
+	i = -0x80000000;
 	rtn = ft_printf("Own: %d", i);
 	printf(" (Rtn: %d) | ", rtn);
 	rtn = printf("Ori: %d", i);
 	printf(" (Rtn: %d)\n", rtn);
 
-	i = 0x7FFFFFFF;
+	i = 42;
 	rtn = ft_printf("Own: %d", i);
 	printf(" (Rtn: %d) | ", rtn);
 	rtn = printf("Ori: %d", i);
@@ -151,17 +163,12 @@ int	main(void)
 	rtn = printf("Ori: %i", i);
 	printf(" (Rtn: %i)\n", rtn);
 
-	i = -0x7FFFFFFF - 1;
+	i = -0x80000000;
 	rtn = ft_printf("Own: %i", i);
 	printf(" (Rtn: %i) | ", rtn);
 	rtn = printf("Ori: %i", i);
 	printf(" (Rtn: %i)\n", rtn);
 
-	i = 0x7FFFFFFF;
-	rtn = ft_printf("Own: %i", i);
-	printf(" (Rtn: %i) | ", rtn);
-	rtn = printf("Ori: %i", i);
-	printf(" (Rtn: %i)\n", rtn);
 
 	printf("\n-----\nUnsigned (%%u)\n-----\n");
 	i = 0xFFFFFFFF;
@@ -182,6 +189,7 @@ int	main(void)
 	rtn = printf("Ori: %u", i);
 	printf(" (Rtn: %i)\n", rtn);
 
+
 	printf("\n-----\nLower Case Hexa (%%x)\n-----\n");
 	i = 2147483647;
 	rtn = ft_printf("Own: %x", i);
@@ -201,6 +209,7 @@ int	main(void)
 	rtn = printf("Ori: %x", i);
 	printf(" (Rtn: %i)\n", rtn);
 
+
 	printf("\n-----\nUpper Case Hexa (%%X)\n-----\n");
 	i = 2147483647;
 	rtn = ft_printf("Own: %X", i);
@@ -219,6 +228,7 @@ int	main(void)
 	printf(" (Rtn: %i) | ", rtn);
 	rtn = printf("Ori: %X", i);
 	printf(" (Rtn: %i)\n", rtn);
+
 
 	printf("\n-----\nPercent (%%%%)\n-----\n");
 	rtn = ft_printf("Own: %%");
