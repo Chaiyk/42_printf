@@ -6,13 +6,13 @@
 /*   By: ychai <ychai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:23:50 by ychai             #+#    #+#             */
-/*   Updated: 2024/04/26 14:31:55 by ychai            ###   ########.fr       */
+/*   Updated: 2024/04/30 11:51:13 by ychai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_hexanbrlow_fd(int n)
+int	ft_hexanbrlow_fd(unsigned int n)
 {
 	int		i;
 	char	*hexa;
@@ -32,7 +32,7 @@ int	ft_hexanbrlow_fd(int n)
 	return (i);
 }
 
-int	ft_hexanbrup_fd(int n)
+int	ft_hexanbrup_fd(unsigned int n)
 {
 	int		i;
 	char	*hexa;

@@ -6,41 +6,26 @@
 /*   By: ychai <ychai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:26:58 by ychai             #+#    #+#             */
-/*   Updated: 2024/04/16 18:26:59 by ychai            ###   ########.fr       */
+/*   Updated: 2024/04/30 11:23:22 by ychai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_unsigned_fd(unsigned int n, int fd)
+int	ft_unsigned_fd(unsigned int n)
 {
 	int	i;
 
 	i = 0;
 	if (n >= 10)
 	{
-		i += ft_unsigned_fd(n / 10, fd);
+		i += ft_unsigned_fd(n / 10);
 		n %= 10;
 	}
 	if (n < 10)
 	{
 		i++;
-		ft_putchar_fd(n + 48, fd);
+		ft_putchar_fd(n + 48);
 	}
 	return (i);
 }
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	unsigned int	i;
-
-	i = 4294967295;
-	ft_PutUnsignedNbr_fd(i, 1);
-	printf("\n");
-
-	i = 0xFFFFFFFF;
-	ft_PutUnsignedNbr_fd(i, 1);
-}
-*/
