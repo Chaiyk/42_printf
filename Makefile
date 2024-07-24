@@ -17,19 +17,13 @@ RM = rm -fr
 all: $(NAME) 
 
 $(NAME): $(OBJS)
-	@ echo "-- Compilling Library... --"
 	$(AR) $(NAME) $(OBJS)
-	@ echo
 
 clean:
-	@ echo "-- Removing *.o files --"
 	$(RM) $(OBJS)
-	@ echo
 
 fclean: clean
-	@ echo "-- Removing *.a files --"
 	$(RM) $(NAME)
-	@ echo
 
 re: fclean all
 

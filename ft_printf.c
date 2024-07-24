@@ -6,7 +6,7 @@
 /*   By: ychai <ychai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 13:21:13 by ychai             #+#    #+#             */
-/*   Updated: 2024/04/30 16:26:39 by ychai            ###   ########.fr       */
+/*   Updated: 2024/06/12 12:10:51 by ychai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			
 			i++;
 			len += ft_convertion(str[i], arr);
 		}
